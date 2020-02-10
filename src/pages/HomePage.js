@@ -13,23 +13,23 @@ class HomePage extends Component {
         return (
             <React.Fragment>
                 <FormSearch formRate={formRate} onChange={setFormRate} getAvailableRate={getAvailableRate} />
+                <Loader status={loadingRate} />
                 {lowestRate !== false &&
                     <React.Fragment>
                         <Rate data={lowestRate} />
                         <ListRates data={rates} />
                     </React.Fragment>
                 }
-                <Loader status={loadingRate} />
-                {rateResponse === Constants.INCORRECT_HOTEL_ID && <Response titleResponse={"Error en el Hotel seleccionado."}
+                {rateResponse === Constants.INCORRECT_HOTEL_ID && <Response id={"error" + Constants.INCORRECT_HOTEL_ID} titleResponse={"Error en el Hotel seleccionado."}
                     descriptionResponse={"Por favor vuelve a seleccionar un Hotel."}
                 />}
-                {rateResponse === Constants.INCORRECT_CHECKIN_DATE && <Response titleResponse={"Error en el CheckIn."}
+                {rateResponse === Constants.INCORRECT_CHECKIN_DATE && <Response id={"error" + Constants.INCORRECT_CHECKIN_DATE} titleResponse={"Error en el CheckIn."}
                     descriptionResponse={"No puede introducir una fecha anterior a la actual."}
                 />}
-                {rateResponse === Constants.INCORRECT_NUMBER_NIGHTS && <Response titleResponse={"Error en el número de noches."}
+                {rateResponse === Constants.INCORRECT_NUMBER_NIGHTS && <Response id={"error" + Constants.INCORRECT_NUMBER_NIGHTS} titleResponse={"Error en el número de noches."}
                     descriptionResponse={"No puede introducir un numero de noches menor que 0 o mayor que 30."}
                 />}
-                {rateResponse === Constants.NO_AVAILABLE_RATES && <Response titleResponse={"Lo sentimos, no hay tarifas disponibles."} />}
+                {rateResponse === Constants.NO_AVAILABLE_RATES && <Response id={"error" + Constants.NO_AVAILABLE_RATES} titleResponse={"Lo sentimos, no hay tarifas disponibles."} />}
             </React.Fragment>
         )
     }

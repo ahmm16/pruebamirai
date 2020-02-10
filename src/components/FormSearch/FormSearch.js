@@ -12,9 +12,6 @@ import Grid from '@material-ui/core/Grid';
 class FormSearch extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-
-        }
         this.onChange = this.onChange.bind(this);
     }
     onChange(e) {
@@ -39,11 +36,8 @@ class FormSearch extends Component {
                         native
                         value={hotelId}
                         name="hotelId"
+                        id="hotelId"
                         onChange={this.onChange}
-                        inputProps={{
-                            name: 'hotelId',
-                            id: 'outlined-age-native-simple',
-                        }}
                     >
                         <option value={''} />
                         <option value={44069509}>Hotel Baqueira Val de Neu</option>
@@ -63,7 +57,7 @@ class FormSearch extends Component {
                             onChange={this.onChange}
                         />
                         <TextField
-                            id="numNoches"
+                            id="numNights"
                             label="Número de noches"
                             type="number"
                             name="numNights"
@@ -75,7 +69,7 @@ class FormSearch extends Component {
                             onChange={this.onChange}
                         />
                     </Grid>
-                    <Button variant="outlined" color="primary" onClick={getAvailableRate}>
+                    <Button variant="outlined" color="primary" id="searchButton" onClick={getAvailableRate}>
                         Buscar
                     </Button>
                 </FormControl>

@@ -39,7 +39,7 @@ const actions = {
                         console.log(reason.message)
                     }
                     dispatch(actions.fetchRateResponse(false));
-                    dispatch(actions.loadingAuthors(false));
+                    dispatch(actions.loadingRate(false));
                 });
             }
         }

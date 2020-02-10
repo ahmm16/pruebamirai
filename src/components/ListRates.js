@@ -16,7 +16,7 @@ class ListRates extends Component {
                     <Grid container spacing={2} className="gridRates">
                         {
                             data.map(rate =>
-                                <Rate data={rate} key={rate.key} list={true}/>
+                                <Rate data={rate} key={data.length--} list={true}/>
                             )
                         }
                     </Grid>

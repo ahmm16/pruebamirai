@@ -24,7 +24,7 @@ const stop = (state = initialState, action) => {
         case actionTypes.FETCH_RATE_RESPONSE:
             return update(state, { rateResponse: { $set: action.payload.value } });
         case actionTypes.LOADING_RATE:
-            return update(state, { loadingAuthors: { $set: action.payload.status } });
+            return update(state, { loadingRate: { $set: action.payload.status } });
         default:
             return state;
     }
