@@ -35,7 +35,6 @@ const actions = {
                         // !Rate
                         console.log(reason.message)
                     } else {
-                        //TODO: Falló otra cosa
                         console.log(reason.message)
                     }
                     dispatch(actions.fetchRateResponse(false));
@@ -60,6 +59,8 @@ const actions = {
                 } else {
                     return value
                 }
+            default:
+                return value
         }
 
     },
