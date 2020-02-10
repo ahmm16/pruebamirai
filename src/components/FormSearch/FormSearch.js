@@ -40,38 +40,40 @@ class FormSearch extends Component {
                         name="hotelId"
                         onChange={this.onChange}
                         inputProps={{
-                          name: 'hotelId',
-                          id: 'outlined-age-native-simple',
+                            name: 'hotelId',
+                            id: 'outlined-age-native-simple',
                         }}
                     >
-                        <option value={''}/>
+                        <option value={''} />
                         <option value={44069509}>Hotel Baqueira Val de Neu</option>
                         <option value={10030559}>Hotel Moderno</option>
                         <option value={100376478}>Hotel Grand Luxor</option>
                     </Select>
-                    <TextField
-                        id="checkIn"
-                        label="Checkin"
-                        type="date"
-                        name="checkIn"
-                        defaultValue={checkIn}
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        onChange={this.onChange}
-                    />
-                    <TextField
-                        id="numNoches"
-                        label="Número de noches"
-                        type="number"
-                        name="numNights"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        variant="outlined"
-                        value={numNights}
-                        onChange={this.onChange}
-                    />
+                    <Grid container alignItems="center" justify="space-between">
+                        <TextField
+                            id="checkIn"
+                            label="Checkin"
+                            type="date"
+                            name="checkIn"
+                            defaultValue={checkIn}
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            onChange={this.onChange}
+                        />
+                        <TextField
+                            id="numNoches"
+                            label="Número de noches"
+                            type="number"
+                            name="numNights"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            variant="outlined"
+                            value={numNights}
+                            onChange={this.onChange}
+                        />
+                    </Grid>
                     <Button variant="outlined" color="primary" onClick={getAvailableRate}>
                         Buscar
                     </Button>
@@ -81,17 +83,4 @@ class FormSearch extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    //authors: state.hotel.authors,
-})
-
-const mapDispatchToProps = {
-    //getAvailableRate: hotelActions.getAvailableRate
-}
-
-export default withRouter(
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )(FormSearch)
-)
+export default FormSearch

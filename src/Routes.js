@@ -19,10 +19,9 @@ const Routes = () => {
 				path="/autores"
 				component={HomePage}
 			/>
-			<Redirect to="/not-found" />
+			<Redirect to="/" />
 		</Switch>
 	);
 };
 
 export default withRouter(Routes)
-//export default Routes;

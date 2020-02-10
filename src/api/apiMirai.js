@@ -1,4 +1,3 @@
-//https://api.mirai.com/MiraiWebService/availableRate/get?hotelId=10030559&checkin=01/01/2020&nights=2&lang=es
 import { encode } from "base-64";
 const BASE_URL = "https://api.mirai.com/MiraiWebService/availableRate";
 

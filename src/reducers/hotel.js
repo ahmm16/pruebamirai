@@ -5,11 +5,9 @@ const initialState = {
     formRate: {
         hotelId: '',
         checkIn: '',
-        checkIn_error: '',
         numNights: '',
-        numNights_error: '',
     },
-    lowestRate: [],
+    lowestRate: false,
     rates: [],
     rateResponse: false,
     loadingRate: false,

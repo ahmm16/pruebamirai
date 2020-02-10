@@ -6,14 +6,11 @@ const actions = {
         return (dispatch, store) => {
             dispatch(actions.loadingRate(true));
             const { hotelId, checkIn, numNights } = store().hotel.formRate
-            const resultCheckin = actions.validateParams("checkIn", checkIn)
+            const resultCheckIn = actions.validateParams("checkIn", checkIn)
             const resultNumNights = actions.validateParams("numNights", numNights)
-            console.log(resultNumNights)
-            console.log(resultCheckin)
-
-            if (resultNumNights === -1) {
+            if (resultCheckIn === -1) {
                 dispatch(actions.fetchRateResponse(-1));
-            } else if (resultCheckin === -2) {
+            } else if (resultNumNights === -2) {
                 dispatch(actions.fetchRateResponse(-2));
             } else {
                 api.getAvailableRate(hotelId, checkIn, numNights).then(response => {
@@ -23,7 +20,7 @@ const actions = {
                         dispatch(actions.fetchRateResponse(true));
                     } else {
                         console.log("error: " + response.message)
-                        dispatch(actions.fetchRateResponse(false));
+                        dispatch(actions.fetchRateResponse(-3));
                     }
                     dispatch(actions.loadingRate(false));
                 }, reason => {
@@ -42,16 +39,16 @@ const actions = {
     },
     validateParams: (key, value) => {
         switch (key) {
-            case 'numNights':
-                if (value < 0 || value > 30) {
+            case 'checkIn':
+                let actualDate = new Date()
+                actualDate = actualDate.toLocaleDateString('en-GB')
+                if (Date.parse(value) < Date.parse(actualDate)) {
                     return -1
                 } else {
                     return value
                 }
-                break
-            case 'checkIn':
-                let actualDate = new Date()
-                if (value < actualDate) {
+            case 'numNights':
+                if (value < 0 || value > 30) {
                     return -2
                 } else {
                     return value
@@ -60,7 +57,7 @@ const actions = {
 
     },
     setFormRate: (key, value) => {
-        if (key === 'checkin') {
+        if (key === 'checkIn') {
             var fecha = new Date(value);
             value = fecha.toLocaleDateString('en-GB')
         }

@@ -1,12 +1,12 @@
 import React, { Component } from "react"
-import LinearProgress from '@material-ui/core/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Loader extends Component {
     render() {
         const { status } = this.props
         return (
             <div className={"loader"}>
-                {status && <LinearProgress color="secondary" />}
+                {status && <CircularProgress color="secondary" />}
             </div>
         );
     }

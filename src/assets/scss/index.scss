@@ -41,23 +41,6 @@ body {
   .card {
     border: 1px solid #ff9900;
     padding: 15px;
-
-    .MuiCardMedia-root {
-      height: 150px;
-    }
-    .buttonCard {
-      width: 100%;
-
-      .linkCard {
-        color: #388e3c;
-      }
-    }
-  }
-
-  .loader {
-    width: "100%", "& > * + *" {
-      margin-top: "20px";
-    }
   }
 
   footer {
@@ -67,10 +50,6 @@ body {
       margin: 20px auto auto auto;
     }
   }
-}
-
-a {
-  text-decoration: none;
 }
 
 #root {
