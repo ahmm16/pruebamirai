@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #f4f6f8;
+  height: 100%;
+
+  .list {
+    width: 250;
+  }
+
+  .backgroundGrey {
+    background-color: #ffda9938;
+  }
+  .paddingContainer {
+    padding: 10px;
+    text-align: center;
+  }
+  header {
+    img {
+      height: 40px;
+    }
+  }
+  .formSearch{
+    width: 40%;
+
+    div{
+      margin-bottom: 10px;
+    }
+  }
+  .gridRates, .gridRate{
+    margin: 20px 0px;
+  }
+  .card {
+    border: 1px solid #f44336;
+    padding: 15px;
+  }
+
+  footer {
+    width: 100%;
+    .madewithlove {
+      color: #f44336;
+      margin: 20px auto auto auto;
+    }
+  }
+}
+
+#root {
+  height: 100%;
+}
