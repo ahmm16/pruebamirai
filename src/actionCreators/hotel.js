@@ -1,5 +1,6 @@
 import { api } from '../api/';
 import actionTypes from '../actionTypes/hotel';
+import Constants from '../constants/'
 
 const actions = {
     getAvailableRate: () => {
@@ -8,19 +9,25 @@ const actions = {
             const { hotelId, checkIn, numNights } = store().hotel.formRate
             const resultCheckIn = actions.validateParams("checkIn", checkIn)
             const resultNumNights = actions.validateParams("numNights", numNights)
-            if (resultCheckIn === -1) {
-                dispatch(actions.fetchRateResponse(-1));
+            if (hotelId < 0 || hotelId === '') {
+                dispatch(actions.fetchRateResponse(Constants.INCORRECT_HOTEL_ID));
+            } else if (resultCheckIn === -1) {
+                dispatch(actions.fetchRateResponse(Constants.INCORRECT_CHECKIN_DATE));
             } else if (resultNumNights === -2) {
-                dispatch(actions.fetchRateResponse(-2));
+                dispatch(actions.fetchRateResponse(Constants.INCORRECT_NUMBER_NIGHTS));
             } else {
                 api.getAvailableRate(hotelId, checkIn, numNights).then(response => {
                     if (response.hasOwnProperty("availableRates")) {
-                        dispatch(actions.fetchLowestRate(response.availableRates[hotelId][0]));
-                        dispatch(actions.fetchRates(response.availableRates[hotelId]));
-                        dispatch(actions.fetchRateResponse(true));
+                        if (response.availableRates[hotelId] !== '') {
+                            dispatch(actions.fetchLowestRate(response.availableRates[hotelId][0]));
+                            dispatch(actions.fetchRates(response.availableRates[hotelId]));
+                            dispatch(actions.fetchRateResponse(true));
+                        } else {
+                            dispatch(actions.fetchRateResponse(Constants.NO_AVAILABLE_RATES));
+                        }
                     } else {
                         console.log("error: " + response.message)
-                        dispatch(actions.fetchRateResponse(-3));
+                        dispatch(actions.fetchRateResponse(Constants.NO_AVAILABLE_RATES));
                     }
                     dispatch(actions.loadingRate(false));
                 }, reason => {

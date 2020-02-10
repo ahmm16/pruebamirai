@@ -17,7 +17,7 @@ class App extends Component {
 	render() {
 		return (
 			<ThemeProvider theme={theme}>
-				<Container maxWidth="xl">
+				<Container maxWidth="lg">
 					<Header />
 					<Grid container direction="row" justify="center" className="backgroundGrey">
 						<Router history={browserHistory}>

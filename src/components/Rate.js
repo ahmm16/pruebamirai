@@ -9,15 +9,17 @@ import Typography from '@material-ui/core/Typography';
 
 class Rate extends Component {
     render() {
-        const { data } = this.props
+        const { data, list } = this.props
         return (
             <React.Fragment>
-                <Typography variant="h3" color="primary" component="h2" align="center">
-                    Oferta más barata encontrada:
+                {!list &&
+                    <Typography variant="h3" color="primary" component="h2">
+                        Oferta más barata encontrada:
                 </Typography>
+                }
                 {
                     data !== false && data !== '' &&
-                    <Grid item xs={6} md={3} >
+                    <Grid item xs={6} md={3} className="gridRate">
                         <Card className="card">
                             <CardContent>
                                 <Typography variant="body2" color="textSecondary" component="p" align="center">
